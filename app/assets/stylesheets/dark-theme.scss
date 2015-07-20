@@ -1,0 +1,351 @@
+@import "./utils";
+
+// variables
+
+$light-text-color: #fff;
+$dark-text-color: #444;
+$primary-text-color: #e0e0e0;
+$secondary-text-color: darken($primary-text-color, 20%);
+$link-text-color: #aeabff;
+$error-text-color: #ff9793;
+
+$bg-color: #2a2a2a;
+$panel-bg-color: #3f3f3f;
+$light-panel-bg-color: #6a6a6a;
+$super-light-panel-bg-color: lighten($light-panel-bg-color, 8%);
+$button-bg-color: #8c88ff;
+$secondary-button-bg-color: #999999;
+
+$alert-color: #E3745B;
+$info-color: #A0D3E8;
+$success-color: #50D2C2;
+$warning-color: #FCAB53;
+
+// general
+
+body {
+  @include color($primary-text-color, $bg-color);
+}
+
+a {
+  color: $link-text-color;
+  &:hover, &:focus, &:active {
+    color: lighten($link-text-color, 4%);
+  }
+}
+
+label, label > span {
+  color: $secondary-text-color;
+}
+
+.label.success {
+  color: $success-color;
+  border-color: $success-color;
+}
+
+.label.info {
+  color: $info-color;
+  border-color: $info-color;
+}
+
+.label.warning {
+  color: $warning-color;
+  border-color: $warning-color;
+}
+
+.label.cancel, .label.alert {
+  color: $alert-color;
+  border-color: $alert-color;
+}
+
+.notification.success {
+  background-color: $success-color;
+  background-color: $panel-bg-color;
+  border-radius: 2px;
+  a {
+     color: $light-text-color;
+  }
+}
+
+.notification.info {
+  background-color: $info-color;
+}
+
+.notification.warning {
+  background-color: $warning-color;
+}
+
+.notification.cancel, .notification.alert {
+  background-color: $alert-color;
+}
+
+.action-sheet {
+  @include color($light-text-color, $super-light-panel-bg-color);
+  &::after {
+    border-bottom-color: $super-light-panel-bg-color;
+  }
+  > ul > li > a {
+    color: $light-text-color;
+    border-top-color: $panel-bg-color;
+    &:hover {
+      @include color($light-text-color, lighten($super-light-panel-bg-color, 4%));
+    }
+  }
+}
+
+.reactTooltip.type-dark {
+  @include color($light-text-color, $super-light-panel-bg-color);
+  &.place-bottom:after {
+    border-bottom-color: $super-light-panel-bg-color;
+  }
+  &.place-top:after {
+    border-top-color: $super-light-panel-bg-color;
+  }
+  &.place-right:after {
+    border-right-color: $super-light-panel-bg-color;
+  }
+  &.place-left:after {
+    border-left-color: $super-light-panel-bg-color;
+  }
+}
+
+.json-inspector__key {
+  color: $secondary-text-color !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: $secondary-text-color;
+}
+
+.modal {
+  @include color($light-text-color, $light-panel-bg-color);
+}
+
+.footer {
+  @include color($secondary-text-color, $panel-bg-color);
+}
+
+
+.tabs {
+@include color($secondary-text-color, $bg-color);
+}
+
+
+.page-layout {
+  background-color: $bg-color;
+
+  .left-column {
+    border-top-color: $bg-color;
+    border-bottom-color: $bg-color;
+    background-color: $panel-bg-color; //lighten($bg-color, 4%);
+
+  }
+
+  .left-column-2 {
+    border-top-color: $bg-color;
+    border-bottom-color: $bg-color;
+    background-color: darken($bg-color, 4%);
+  }
+
+  .main-content {
+    background-color: $bg-color;
+  }
+
+  .right-column {
+    border-top-color: $bg-color;
+    border-bottom-color: $bg-color;
+    background-color: darken($bg-color, 4%);
+  }
+
+}
+
+.transfer-top {
+  background-color: $light-panel-bg-color;
+  label, label > span {
+    color: $light-text-color;
+  }
+}
+
+// buttons
+
+.button {
+  background-color: $button-bg-color;
+  &:hover, &:focus, &:active {
+    background-color: lighten($button-bg-color, 4%) !important;
+  }
+  &.outline {
+    color: $secondary-text-color;
+    border-color: $secondary-text-color;
+    &:hover {
+      color: $light-text-color;
+      border-color: $light-text-color;
+    }
+  }
+}
+
+.button.secondary {
+  @include color($dark-text-color, $secondary-button-bg-color);
+  &:hover, &:focus, &:active {
+    @include color(lighten($dark-text-color, 4%), lighten($secondary-button-bg-color, 4%), true);
+  }
+}
+
+.header .button {
+  background-color: $panel-bg-color;
+}
+
+.grp-menu-item button {
+  &:hover, &:focus, &:active {
+    background-color: #4c4c4c !important;
+  }
+}
+
+.header .logo {
+  color: $secondary-text-color;
+}
+
+// cards
+
+.card {
+  @include color($primary-text-color, $panel-bg-color);
+  background-color: $panel-bg-color;
+  &:hover {
+    background-color: lighten($panel-bg-color, 4%);
+  }
+  a {
+    color: $primary-text-color;
+  }
+  .card-divider {
+    @include color($primary-text-color, $light-panel-bg-color);
+  }
+}
+
+// tables
+.table {
+  > thead > tr > th {
+    border-bottom: 2px solid $dark-text-color;
+    color: $secondary-text-color;
+  }
+  > tbody > tr > td {
+    border-bottom: 1px solid $dark-text-color;
+  }
+  &.table-hover > tbody > tr:hover > td, .table-hover > tbody > tr:hover > th {
+    background-color: lighten($bg-color, 4%);
+  }
+}
+
+// block-list
+
+.block-list {
+  color: $primary-text-color;
+  li {
+    border-bottom: 1px solid $dark-text-color;
+  }
+  li > a {
+    color: $secondary-text-color;
+  }
+  li > a:hover, li > label:hover, li select:hover, li.active > a {
+    color: $light-text-color;
+    background-color: lighten($bg-color, 4%);
+  }
+  li:first-child {
+    border-top: 1px solid $dark-text-color;
+  }
+  header {
+    color: $secondary-text-color;
+  }
+}
+
+
+// forms
+
+.has-error, div.has-error > label, div.has-error > label > span {
+  color: $error-text-color;
+}
+
+div.has-error > input, div.has-error > input:hover, div.has-error > input:focus {
+  border-color: $error-text-color;
+}
+
+.has-error input, .has-error select, .has-error textarea {
+  border-color: $error-text-color;
+}
+
+input[type="text"], input[type="password"], input[type="email"], input[type="number"], input[type="search"], textarea, select {
+  background-color: #e0e0e0;
+  &:hover, &:focus, &:active {
+    background-color: #e0e0e0;
+  }
+  &:focus {
+    border-color: $light-text-color;
+  }
+}
+
+
+// Tabs
+
+.tabs {
+  border-bottom-color: $dark-text-color;
+  > .tab-item {
+    color: $secondary-text-color;
+    &.is-active {
+      color: $primary-text-color;
+      border-bottom-color: $button-bg-color;
+    }
+    &:hover, &:focus, &:active {
+      color: $primary-text-color;
+    }
+  }
+}
+
+
+
+// Exchange
+
+.depthchart {
+  background-color: $bg-color;
+  &:hover {
+  background-color: $bg-color;
+  }
+  &.area {
+    color: #FFF;
+  }
+}
+
+td.orderHistoryAsk {
+ color: $alert-color;
+ font-weight: bold;
+}
+
+td.orderHistoryBid {
+  color: $success-color;
+  font-weight: bold;
+}
+
+
+// Account page
+.account-left-panel {
+  h5 {
+    color: $primary-text-color;
+  }
+  h6 {
+    color: $secondary-text-color;
+  }
+}
+
+.account-left-menu {
+  > li > a:hover, > li > label:hover, > li select:hover {
+    color: $light-text-color;
+    background-color: $panel-bg-color;
+  }
+  > li > a.active {
+    color: $light-text-color;
+    background-color: lighten($panel-bg-color, 4%);
+    border-left-color: darken($button-bg-color, 4%);
+  }
+}
+
+
+.pagination {
+    background-color: $panel-bg-color;
+}

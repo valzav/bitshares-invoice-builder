@@ -1,0 +1,47 @@
+@import "./foundation_settings";
+@import "../../../node_modules/react-foundation-apps/bower_components/foundation-apps/scss/foundation.scss";
+@import "./foundation_overrides";
+@import "./tables";
+@import "./dark-theme";
+
+a {
+  transition: all 0.3s ease 0s;
+}
+
+.error {
+  color: #ff0000;
+  padding: 16px;
+}
+
+.no-overflow {
+  overflow: hidden;
+}
+
+.no-padding {
+  padding: 0 !important;
+}
+
+.no-margin {
+  margin: 0 !important;
+}
+
+.center-content {
+  text-align: center;
+  > * {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+pre {
+  overflow: visible;
+}
+
+.compressed-data {
+  word-break: break-all;
+}
+
+.line-items {
+  max-height: 26rem;
+  overflow-y: auto;
+}

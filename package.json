@@ -1,0 +1,32 @@
+{
+  "name": "bitshares-invoice",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "webpack-dev-server --hot --inline --progress --colors --devtool inline-source-map --content-base assets/",
+    "build": "webpack --progress --colors"
+  },
+  "author": "Cryptonomex",
+  "license": "",
+  "dependencies": {
+    "babel-core": "^5.7.4",
+    "babel-loader": "^5.3.2",
+    "bs58": "^2.0.1",
+    "css-loader": "^0.15.5",
+    "extract-text-webpack-plugin": "^0.8.2",
+    "lzma": "^2.1.6",
+    "node-libs-browser": "^0.5.2",
+    "node-sass": "^3.2.0",
+    "object-assign": "^2.1.1",
+    "pubsub-js": "^1.5.2",
+    "react": "^0.13.3",
+    "react-foundation-apps": "^0.6.1",
+    "react-hot-loader": "^1.2.8",
+    "react-responsive-mixin": "^0.3.5",
+    "sass-loader": "^1.0.2",
+    "webpack": "^1.10.1",
+    "webpack-dev-server": "^1.10.1"
+  }
+}
