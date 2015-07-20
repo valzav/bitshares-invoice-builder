@@ -23,7 +23,6 @@ class InvoiceBuilder extends React.Component {
     }
 
     formChange(e) {
-        //console.log("[InvoiceBuilder.jsx:18] ----- formChange ----->", e.target.name, e.target.value);
         let invoice = this.state.invoice;
         let target_name = e.target.name;
         let match = target_name.match(/li\-(\d+)\-(\w+)/)
@@ -31,7 +30,6 @@ class InvoiceBuilder extends React.Component {
             let index = match[1];
             let field = match[2];
             invoice.line_items[index][field] = e.target.value
-            console.log("[InvoiceBuilder.jsx:28] ----- formChange ----->", match);
         } else {
             invoice[target_name] = e.target.value;
         }
@@ -41,9 +39,9 @@ class InvoiceBuilder extends React.Component {
     updateCompressedData() {
         lzma.compress(JSON.stringify(this.state.invoice), 1, compressed_data => {
             let buf = new Buffer(compressed_data);
-            let data = buf.toString("hex");
+            let data = bs58.encode(buf);
             React.findDOMNode(this.refs.compressed_data).innerHTML = data;
-            React.findDOMNode(this.refs.compressed_data_link).href = "http://localhost:8080//#/invoice/" + data;
+            React.findDOMNode(this.refs.compressed_data_link).href = "http://localhost:8080/#/invoice/" + data;
         });
     }
 
@@ -138,16 +136,16 @@ class InvoiceBuilder extends React.Component {
                     <div className="grid-block">
                         <div className="small-4">
                             <div className="grid-content">
-                                <h4>JSON</h4>
-                                <pre>{JSON.stringify(this.state.invoice, null, 4)}</pre>
-                            </div>
-                        </div>
-                        <div className="small-8">
-                            <div className="grid-content">
                                 <h4>Compressed Data</h4>
                                 <div className="compressed-data" ref="compressed_data"></div>
                                 <br/>
                                 <a ref="compressed_data_link" href className="button" target="_blank">Review and pay</a>
+                            </div>
+                        </div>
+                        <div className="small-8">
+                            <div className="grid-content">
+                                <h4>JSON</h4>
+                                <pre>{JSON.stringify(this.state.invoice, null, 4)}</pre>
                             </div>
                         </div>
                     </div>
